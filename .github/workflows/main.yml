@@ -24,6 +24,17 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      
+      - name: Make a file
+        run: |
+          echo fred > fred.txt
+
+      - name: Archive Artifacts
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: afile
+          path: ${{ github.workspace }}/fred.*
+          if-no-files-found: error
   
   dowork:
     name: doworkthings
